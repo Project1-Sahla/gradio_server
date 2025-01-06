@@ -28,7 +28,7 @@ async function initGradioClients() {
 
 initGradioClients();
 
-// Middleware to check if a Gradio client is initialized
+// Middleware to check if a Gradio client is initialized and direct the request to the correct client
 function checkGradioClient(key) {
     return (req, res, next) => {
         if (!gradioClients[key]) {
