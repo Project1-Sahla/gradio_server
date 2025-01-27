@@ -60,8 +60,13 @@ app.post('/transcribe', upload.single('audio'), checkGradioClient('speech2sign')
 app.post('/process-video', upload.single('video'), checkGradioClient('sign2speech'), async (req, res) => {
     try {
         if (!req.file) throw new Error('No video file provided');
-
+        console.log('====================================');
+        console.log('request triggered ');
+        console.log('====================================');
         const videoBlob = new Blob([req.file.buffer], { type: 'video/mp4' });
+        console.log('====================================');
+        console.log(videoBlob);
+        console.log('====================================');
         const result = await req.gradioClient.predict("/predict", {
             input_video_path: { video: handle_file(videoBlob) }
         });
